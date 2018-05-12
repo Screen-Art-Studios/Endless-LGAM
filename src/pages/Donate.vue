@@ -107,7 +107,10 @@ export default {
 @red: #c90c2e;
 @grey: #323d38;
   .main {
+    width: 100%;
     grid-template-columns: 1fr 1fr 1fr;
+    position: fixed;
+    margin-top: 100px;
   }
   .donate {
     grid-column: 2;
