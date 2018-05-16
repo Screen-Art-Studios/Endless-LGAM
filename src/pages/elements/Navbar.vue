@@ -1,15 +1,11 @@
 <template>
     <div class="Navmain">
-      <div class="header">
-        <h1 v-on:click="navToggle(); $router.push('/')">Endless Love Grace & Mercy<br/><span>Community Shelter</span></h1>
+        <div class="logo" v-on:click="navToggle(); $router.push('/')"></div>
+        <button class="About" v-on:click="navToggle(); $router.push('/About')">ABOUT</button>
+        <button class="Gallery" v-on:click="navToggle(); $router.push('/Gallery')">GALLERY</button>
+        <button class="Contact" v-on:click="navToggle(); $router.push('/Contact')">CONTACT</button>
+        <button class="Donate" v-on:click="navToggle(); $router.push('/Donate')">DONATE</button>
       </div>
-      <div class="buttonbox">
-        <button class="About" v-on:click="navToggle(); $router.push('/About')">About</button>
-        <button class="Gallery" v-on:click="navToggle(); $router.push('/Gallery')">Gallery</button>
-        <button class="Contact" v-on:click="navToggle(); $router.push('/Contact')">Contact</button>
-        <button class="Donate" v-on:click="navToggle(); $router.push('/Donate')">Donate</button>
-      </div>
-    </div>
 </template>
 
 <script>
@@ -45,38 +41,28 @@ export default {
 <style scoped>
 .Navmain {
   width: 100%;
-  height: 150px;
-  background-color: #008475;
+  height: 90px;
+  background-color: #008490;
   position: fixed;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
 }
 
-.header {
-  height: 60px;
-  outline: 1px dashed #30b298;
-  outline-offset: 35px;
-}
-h1 {
-  text-align: center;
-  font-size: 2em;
-  color: white;
-}
-span {
-  font-size: .8em;
-}
-.buttonbox {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+.logo {
+  background-image: url('../../assets/logo.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 230%;
+  grid-column: 3;
 }
 button {
-  background-color: #008475;
-  border: 1px solid #00664c;
-  outline: 1px dashed #30b298;
-  outline-offset: -4px;
-  height: 40px;
-  margin-top: 40px;
-  padding-top: 5px;
+  border: none;
+  background-color: transparent;
+  height: 10px;
   color: white;
-  font-family: 'Open Sans', sans-serif;
+  font-family: Times;
   -webkit-animation-duration: .25s;
   animation-duration: .25s;
   -webkit-animation-fill-mode: both;
@@ -89,6 +75,18 @@ button {
 button:hover {
   animation-name: bounce;
   -moz-animation-name: bounce;
+}
+.About {
+  grid-column: 1;
+}
+.Gallery {
+  grid-column: 2;
+}
+.Contact {
+  grid-column: 4;
+}
+.Donate {
+  grid-column: 5;
 }
 
 @keyframes bounce {
