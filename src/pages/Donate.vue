@@ -1,7 +1,8 @@
 <template>
   <div class="main">
     <div class="form-row" v-if="modal!=='thanks'">
-      <h2 v-if="modal==='donate'">Donation Ammount</h2>
+      <button class="back" v-on:click="$router.push('/')">Go Back</button>
+      <h2 v-if="modal==='donate'">Donation Amount</h2>
       <input class="ammount" v-if="modal==='donate'" v-model="ammount" placeholder="$0.00"/>
       <div id="card-element"></div>
       <div id="card-errors" role="alert"></div>
@@ -13,6 +14,7 @@
     </div>
     <div class="donate" v-if="button">
       <button v-on:click="stripeSetup(); button=false">Donate</button>
+      <h1>(We are completely funded by community and corporate generosity. We are a registered non-profit corporation 501( c)3, and all donations are completely tax-deductible.)</h1>
     </div>
   </div>
 </template>
@@ -107,20 +109,42 @@ export default {
 @red: #c90c2e;
 @grey: #323d38;
   .main {
+    height: 100%;
     width: 100%;
+    display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(8, 4em);
     position: fixed;
     margin-top: 100px;
   }
+  h1 {
+    font-size: 1.5em;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    color: #008490;
+  }
+  h2 {
+    color: #008490;
+  }
   .donate {
-    grid-column: 2;
+    grid-row: 2;
+    grid-column-start: 1;
+    grid-column-end: 4;
   }
   .donate button {
+    color: white;
+    border: none;
+    box-shadow: 0px 2px 5px black ;
+    background-color: #ffb759;
     text-align: center;
-    width: 50%;
-    margin-left: 25%;
-    font-size: 2em;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    font-size: 2.5em;
     line-height: 1.6em;
+    grid-column-start: 1;
+    grid-column-end: 4;
   }
   .StripeElement {
     background-color: white;
@@ -150,12 +174,11 @@ export default {
   .form-row {
     text-align: center;
     width: 100%;
-    height: 200px;
     line-height: 2em;
-    margin-top: 20px;
-    padding-top: 10px;
     grid-column-start: 1;
     grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 8;
   }
   .thanks {
     font-size: 2em;
@@ -163,10 +186,37 @@ export default {
     margin-top: 200px;
   }
   .back {
+    color: white;
+    border: none;
+    box-shadow: 0px 2px 5px black ;
+    background-color: #c22227;
     font-size: 2em;
     text-align: center;
-    margin-top: 40px;
-    width: 50%;
-    margin-left: 25%;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    grid-column-start: 1;
+    grid-column-end: 4;
+  }
+  input {
+    border: 1px solid black;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  .submit {
+    color: white;
+    border: none;
+    box-shadow: 0px 2px 5px black ;
+    background-color: #008490;
+    width: 90%;
+  }
+  @media (min-width: 1000px) {
+    .main {
+      width: 70%;
+      margin-left: 15%;
+      margin-right: 15%;
+      box-shadow: 0px 5px 8px black;
+    }
   }
 </style>

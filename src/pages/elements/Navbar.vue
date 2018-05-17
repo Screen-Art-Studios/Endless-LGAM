@@ -46,6 +46,7 @@ export default {
   position: fixed;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  box-shadow: 1px 2px 5px black;
 }
 
 .logo {
