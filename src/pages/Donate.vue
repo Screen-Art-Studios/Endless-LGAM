@@ -4,6 +4,7 @@
       <button class="back" v-on:click="$router.push('/')">Go Back</button>
       <h2 v-if="modal==='donate'">Donation Amount</h2>
       <input class="ammount" v-if="modal==='donate'" v-model="ammount" placeholder="$0.00"/>
+      <input class="email" v-if="modal==='donate'" v-model="email" placeholder="user@example.com"/>
       <div id="card-element"></div>
       <div id="card-errors" role="alert"></div>
       <button class="submit" v-on:click="submitCard" v-if="modal==='donate'">Submit Donation</button>
@@ -27,6 +28,7 @@ export default {
   data () {
     return {
       modal: '',
+      email: '',
       button: true,
       stripe: '',
       ammount: '',
@@ -86,10 +88,10 @@ export default {
       vue.stripeToken = token
       vue.ammount = parseInt(vue.ammount)
       vue.ammount = 100 * vue.ammount
-      // https://api.endlesslovegraceandmercy.org
-      axios.post('http://localhost:81/donate', {
+      axios.post('https://api.endlesslovegraceandmercy.org/donate', {
         ammount: vue.ammount,
-        stripeToken: vue.stripeToken
+        stripeToken: vue.stripeToken,
+        recipients: vue.email
       })
         .then(function () {
           vue.error = false
