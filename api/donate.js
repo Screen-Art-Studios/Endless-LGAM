@@ -14,7 +14,7 @@ router.post("/", (req,res) => {
   const charge = stripe.charges.create({
     amount: req.body.ammount,
     currency: 'usd',
-    description: 'Example charge',
+    description: 'Donation',
     source: token,
   });
 
@@ -26,8 +26,8 @@ router.post("/", (req,res) => {
           ignoreTLS: false,
           requireTLS: true,
           auth: {
-              user: 'kendria@endlesslovegraceandmercy.com',
-              pass: ''
+              user: 'kendria@endlesslovegraceandmercy.org',
+              pass: 'eLgmkend8!'
           },
           tls: {
               ciphers: 'SSLv3'
@@ -36,7 +36,7 @@ router.post("/", (req,res) => {
 
     // setup e-mail data with unicode symbols
     var mailOptions = {
-        from: '"Endless Love Grace & Mercy" <kendria@endlesslovegraceandmercy.com>', // sender address
+        from: '"Endless Love Grace & Mercy" <kendria@endlesslovegraceandmercy.org>', // sender address
         to: req.body.recipients, // list of recipients
         subject: 'Donation Receipt', // Subject line
         text: `Thank you for your donation to Endless Love Grace & Mercy homeless shelter! You donated ${req.body.ammount/100} at ${new.Date()}.`, // plaintext body
