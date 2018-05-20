@@ -5,7 +5,6 @@ var app = express();
 var router = express.Router();
 var path = __dirname + "/views/";
 var donate = require('./donate.js');
-var email = require('./email.js');
 
 app.use(bodyParser.json());
 app.use(express.static(path));
@@ -23,7 +22,6 @@ app.listen(port, () => {
 })
 
 app.use("/donate", donate);
-app.use("/email", email);
 
 router.use( (req,res,next) => {
   console.log("/" + req.method);

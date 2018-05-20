@@ -39,9 +39,9 @@ router.post("/", (req,res) => {
         from: '"Endless Love Grace & Mercy" <kendria@endlesslovegraceandmercy.org>', // sender address
         to: req.body.recipients, // list of recipients
         subject: 'Donation Receipt', // Subject line
-        text: `Thank you for your donation to Endless Love Grace & Mercy homeless shelter! You donated ${req.body.ammount/100} at ${new.Date()}.`, // plaintext body
+        text: `Thank you for your donation to Endless Love Grace & Mercy homeless shelter! You donated ${req.body.ammount/100} at ${new Date()}.`, // plaintext body
         html: `<h2 style="color: red">Thank you for your donation to Endless Love Grace & Mercy homeless shelter!</h2>
-        <h4> You donated ${req.body.ammount/100} at ${new.Date()}.</h4>` // html body
+        <h4> You donated ${req.body.ammount/100} at ${new Date()}.</h4>` // html body
     };
 
     // send mail with defined transport object
