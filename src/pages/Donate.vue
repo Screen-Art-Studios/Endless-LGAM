@@ -120,6 +120,7 @@ export default {
     margin-top: 100px;
   }
   h1 {
+    text-align: center;
     font-size: 1.5em;
     width: 90%;
     margin-left: 5%;
@@ -182,11 +183,6 @@ export default {
     grid-row-start: 1;
     grid-row-end: 8;
   }
-  .thanks {
-    font-size: 2em;
-    text-align: center;
-    margin-top: 200px;
-  }
   .back {
     color: white;
     border: none;
@@ -212,6 +208,9 @@ export default {
     box-shadow: 0px 2px 5px black ;
     background-color: #008490;
     width: 90%;
+  }
+  .thanks {
+    width: 100%;
   }
   @media (min-width: 1000px) {
     .main {

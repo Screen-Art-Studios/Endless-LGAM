@@ -1,9 +1,7 @@
 <template>
     <div class="Navmain">
-        <div class="logo" v-on:click="navToggle(); $router.push('/')"></div>
-        <button class="About" v-on:click="navToggle(); $router.push('/About')">ABOUT</button>
-        <button class="Gallery" v-on:click="navToggle(); $router.push('/Gallery')">GALLERY</button>
         <button class="Contact" v-on:click="navToggle(); $router.push('/Contact')">CONTACT</button>
+        <div class="logo" v-on:click="navToggle(); $router.push('/')"></div>
         <button class="Donate" v-on:click="navToggle(); $router.push('/Donate')">DONATE</button>
       </div>
 </template>
@@ -45,7 +43,7 @@ export default {
   background-color: #008490;
   position: fixed;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   box-shadow: 1px 2px 5px black;
 }
 
@@ -55,13 +53,13 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   width: 100%;
-  height: 230%;
-  grid-column: 3;
+  height: 90%;
+  grid-column: 2;
 }
 button {
   border: none;
   background-color: transparent;
-  height: 10px;
+  height: 100px;
   color: white;
   font-family: Times;
   -webkit-animation-duration: .25s;
@@ -77,17 +75,11 @@ button:hover {
   animation-name: bounce;
   -moz-animation-name: bounce;
 }
-.About {
+.Contact {
   grid-column: 1;
 }
-.Gallery {
-  grid-column: 2;
-}
-.Contact {
-  grid-column: 4;
-}
 .Donate {
-  grid-column: 5;
+  grid-column: 3;
 }
 
 @keyframes bounce {
