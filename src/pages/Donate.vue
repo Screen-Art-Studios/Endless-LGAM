@@ -15,7 +15,7 @@
     </div>
     <div class="donate" v-if="button">
       <button v-on:click="stripeSetup(); button=false">Donate</button>
-      <h1>(We are completely funded by community and corporate generosity. We are a registered non-profit corporation 501( c)3, and all donations are completely tax-deductible.)</h1>
+      <h1>(We are completely funded by community and corporate generosity. We are a registered non-profit corporation 501( c)3 (Pending), and all donations are completely tax-deductible.)</h1>
     </div>
   </div>
 </template>
