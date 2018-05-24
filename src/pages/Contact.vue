@@ -1,17 +1,54 @@
 <template>
   <div class="main">
-    <h1>Send Us A Message</h1>
-    <input class="name" placeholder="Name" required>
-    <input class="email" placeholder="Email" required>
-    <input class="phone" placeholder="Phone">
-    <textarea class="message" placeholder="Message" required></textarea>
-    <button class="send">SEND</button>
+    <div v-if="modal==='sent'">
+      <h4>Message Sent</h4>
+      <button v-on:click="$router.push('/')">Go Home</button>
+    </div>
+    <div v-if="modal==='sending'">
+      <h4>Message Sending</h4>
+      <button v-on:click="$router.push('/')">Go Home</button>
+    </div>
+    <div v-else>
+      <h1>Send Us A Message</h1>
+      <input class="name" v-model="name" placeholder="Name" required />
+      <input class="email" v-model="email" placeholder="Email" required />
+      <input class="phone" v-model="phone" placeholder="Phone" />
+      <textarea class="message" v-model="message" placeholder="Message" required></textarea>
+      <button class="send" v-on:click="send">SEND</button>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'contact'
+  name: 'contact',
+  data: function () {
+    return {
+      modal: '',
+      name: '',
+      email: '',
+      phone: '',
+      message: ''
+    }
+  },
+  methods: {
+    send () {
+      let vue = this
+      vue.modal = 'sending'
+      axios.post('https://api.endlesslovegraceandmercy.org/contact', {
+        name: vue.name,
+        email: vue.email,
+        phone: vue.phone,
+        message: vue.message
+      })
+        .then(response => {
+          vue.modal = 'sent'
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    }
+  }
 }
 </script>
 
