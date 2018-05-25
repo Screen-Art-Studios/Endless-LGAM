@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <div class="form-row" v-if="modal!=='thanks'">
+    <div class="form-row" v-if="modal!=='thanks' && modal!=='processing'">
       <button class="back" v-on:click="$router.push('/')">Go Back</button>
       <h2 v-if="modal==='donate'">Donation Amount</h2>
       <input class="ammount" v-if="modal==='donate'" v-model="ammount" placeholder="$0.00"/>
@@ -12,6 +12,9 @@
     <div v-if="modal==='thanks'">
       <h1 class="thanks">Thank you for the Donation!!</h1>
       <button class="back" v-on:click="$router.push('/')">Go Back</button>
+    </div>
+    <div v-if="modal==='processing'">
+      <h1 class="thanks">Processing your Donation</h1>
     </div>
     <div class="donate" v-if="button">
       <button v-on:click="stripeSetup(); button=false">Donate</button>
@@ -42,7 +45,7 @@ export default {
     stripeSetup () {
       let vue = this
       vue.modal = 'donate'
-      vue.stripe = window.Stripe('pk_test_GfHvaGfRpGmaHgrzGAecyh2D')
+      vue.stripe = window.Stripe('')
       var elements = vue.stripe.elements()
       var style = {
         base: {
@@ -73,6 +76,7 @@ export default {
     },
     submitCard () {
       let vue = this
+      vue.modal = 'processing'
       vue.stripe.createToken(vue.card).then(function (result) {
         if (result.error) {
           const errorElement = document.getElementById('card-errors')
@@ -88,6 +92,7 @@ export default {
       vue.stripeToken = token
       vue.ammount = parseInt(vue.ammount)
       vue.ammount = 100 * vue.ammount
+      vue.payment = true
       axios.post('https://api.endlesslovegraceandmercy.org/donate', {
         ammount: vue.ammount,
         stripeToken: vue.stripeToken,

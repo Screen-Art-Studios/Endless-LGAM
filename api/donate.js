@@ -1,4 +1,4 @@
-var stripe = require("stripe")("sk_test_654FY0haAwHGptIM35KfSRx5");
+var stripe = require("stripe")("");
 var express = require("express");
 var nodemailer = require('nodemailer');
 var _ = require("lodash");
@@ -27,7 +27,7 @@ router.post("/", (req,res) => {
           requireTLS: true,
           auth: {
               user: 'kendria@endlesslovegraceandmercy.org',
-              pass: 'eLgmkend8!'
+              pass: ''
           },
           tls: {
               ciphers: 'SSLv3'

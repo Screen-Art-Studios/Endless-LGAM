@@ -4,9 +4,12 @@
       <h4>Message Sent</h4>
       <button v-on:click="$router.push('/')">Go Home</button>
     </div>
-    <div v-if="modal==='sending'">
+    <div v-else-if="modal==='error'">
+      <h4>Message Failed to Send</h4>
+      <button v-on:click="modal=''">Go Back</button>
+    </div>
+    <div v-else-if="modal==='sending'">
       <h4>Message Sending</h4>
-      <button v-on:click="$router.push('/')">Go Home</button>
     </div>
     <div v-else>
       <h1>Send Us A Message</h1>
@@ -20,6 +23,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'contact',
   data: function () {
@@ -45,6 +49,7 @@ export default {
           vue.modal = 'sent'
         })
         .catch(err => {
+          vue.modal = 'error'
           console.log(err)
         })
     }
@@ -85,6 +90,9 @@ button {
 h1 {
   text-align: center;
   font-size: 2em;
+}
+h4 {
+  text-align: center;
 }
 @media (min-width: 1000px) {
   .main {
